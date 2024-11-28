@@ -5,6 +5,9 @@ ENV HOME="/root"
 WORKDIR /app
 COPY . .
 
+
+COPY my_srtm_data /app/srtm_tiles
+
 # rust and cargo for maturin
 RUN apt-get update && \
     apt-get install -y curl build-essential && \
