@@ -170,4 +170,3 @@ def serve_frontend():
     Serves the index.html file as the frontend for the app.
     """
     return FileResponse("index.html")
-s
