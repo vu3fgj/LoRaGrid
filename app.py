@@ -1,4 +1,4 @@
-"""
+	"""
 Meshtastic Signal Coverage Prediction App
 
 This FastAPI application provides an endpoint to predict Meshtastic signal coverage
@@ -29,10 +29,20 @@ import sys
 import os
 import time
 
-
 logging.basicConfig(level=logging.INFO)
 app = FastAPI()
 
+config = {
+    "tile_dir": os.path.join(os.getcwd(), "my_srtm_data"),
+    "h3_res": 8,
+    "max_distance_km": 100.0
+}
+
+# Debugging to verify the directory and contents
+if not os.path.exists(config["tile_dir"]):
+    raise ValueError(f"Directory {config['tile_dir']} does not exist.")
+else:
+    print(f"Directory {config['tile_dir']} exists. Contents: {os.listdir(config['tile_dir'])}")
 # Add CORS middleware
 app.add_middleware(
     CORSMiddleware,
